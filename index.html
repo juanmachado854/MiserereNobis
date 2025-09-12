@@ -8,14 +8,11 @@
     a {color:#00FFFF;text-decoration:none;}
     a:hover {color:#FF00FF;}
     .nav {margin:20px;}
-    input, textarea {width: 300px; margin:5px;}
-    button {margin:5px;}
-    #posts {margin-top:20px;}
   </style>
 </head>
 <body>
   <h1>✟ Miserere Nobis ✟</h1>
-
+  
   <!-- MIDI hymn autoplay -->
   <embed src="https://www.vgmusic.com/music/other/miscellaneous/piano/AveMaria.mid" autostart="true" loop="true" hidden="true">
 
@@ -26,44 +23,24 @@
   </div>
 
   <hr>
-
-  <h2>Add a New Post</h2>
-  <input type="text" id="postDate" placeholder="Date (e.g., September 12, 2025)"><br>
-  <textarea id="postText" placeholder="Write your post here..." rows="4"></textarea><br>
-  <button onclick="addPost()">Add Post</button>
-
-  <div id="posts">
-    <h2>Latest Post</h2>
-    <p id="latestPost">No posts yet.</p>
-  </div>
+  <h2>Latest Post</h2>
+  <p id="latestPost">Loading posts...</p>
 
   <script>
-    // Load posts from localStorage
-    let posts = JSON.parse(localStorage.getItem('posts') || '[]');
-
-    function updateDisplay() {
-      if(posts.length > 0){
-        let latest = posts[posts.length-1];
-        document.getElementById('latestPost').innerHTML = "<b>" + latest.date + "</b> — " + latest.text;
-      }
-    }
-
-    function addPost() {
-      let date = document.getElementById('postDate').value;
-      let text = document.getElementById('postText').value;
-      if(date && text){
-        posts.push({date: date, text: text});
-        localStorage.setItem('posts', JSON.stringify(posts));
-        updateDisplay();
-        document.getElementById('postDate').value = '';
-        document.getElementById('postText').value = '';
-        alert("Post added! Refresh the History page to see it.");
-      } else {
-        alert("Please enter both a date and text.");
-      }
-    }
-
-    updateDisplay();
+    fetch('posts.json')
+      .then(response => response.json())
+      .then(posts => {
+        if(posts.length > 0){
+          let latest = posts[posts.length-1];
+          document.getElementById('latestPost').innerHTML = "<b>" + latest.date + "</b> — " + latest.text;
+        } else {
+          document.getElementById('latestPost').innerHTML = "No posts yet.";
+        }
+      })
+      .catch(err => {
+        document.getElementById('latestPost').innerHTML = "Error loading posts.";
+        console.error(err);
+      });
   </script>
 
   <hr>
