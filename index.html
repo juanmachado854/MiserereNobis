@@ -3,35 +3,22 @@
 <head>
   <title>Miserere Nobis</title>
   <style>
-    body {
-      background-color: #000033;
-      color: #FFD700;
-      font-family: "Courier New", monospace;
-      text-align: center;
-      background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
-    }
-    h1 {
-      font-family: "Brush Script MT", cursive;
-      font-size: 48px;
-      color: #FFCCFF;
-      text-shadow: 2px 2px #660066;
-    }
-    a {
-      color: #00FFFF;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #FF00FF;
-    }
-    .nav {
-      margin: 20px;
-    }
+    body {background-color:#000033;color:#FFD700;font-family:"Courier New", monospace;text-align:center;background-image:url("https://www.transparenttextures.com/patterns/stardust.png");}
+    h1 {font-family:"Brush Script MT", cursive;font-size:48px;color:#FFCCFF;text-shadow:2px 2px #660066;}
+    a {color:#00FFFF;text-decoration:none;}
+    a:hover {color:#FF00FF;}
+    .nav {margin:20px;}
+    input, textarea {width: 300px; margin:5px;}
+    button {margin:5px;}
+    #posts {margin-top:20px;}
   </style>
 </head>
 <body>
   <h1>✟ Miserere Nobis ✟</h1>
-  <p>Welcome to my humble corner of the web — a blend of journal, book reviews, things I like, and architecture.</p>
-  
+
+  <!-- MIDI hymn autoplay -->
+  <embed src="https://www.vgmusic.com/music/other/miscellaneous/piano/AveMaria.mid" autostart="true" loop="true" hidden="true">
+
   <div class="nav">
     <a href="index.html">Home</a> | 
     <a href="history.html">History</a> | 
@@ -39,10 +26,45 @@
   </div>
 
   <hr>
-  <h2>Latest Post</h2>
-  <p><b>September 12, 2025</b> — First post in my new 90’s style blog! 🌐✨</p>
 
-  <p><i>“Ad Majorem Dei Gloriam.”</i></p>
+  <h2>Add a New Post</h2>
+  <input type="text" id="postDate" placeholder="Date (e.g., September 12, 2025)"><br>
+  <textarea id="postText" placeholder="Write your post here..." rows="4"></textarea><br>
+  <button onclick="addPost()">Add Post</button>
+
+  <div id="posts">
+    <h2>Latest Post</h2>
+    <p id="latestPost">No posts yet.</p>
+  </div>
+
+  <script>
+    // Load posts from localStorage
+    let posts = JSON.parse(localStorage.getItem('posts') || '[]');
+
+    function updateDisplay() {
+      if(posts.length > 0){
+        let latest = posts[posts.length-1];
+        document.getElementById('latestPost').innerHTML = "<b>" + latest.date + "</b> — " + latest.text;
+      }
+    }
+
+    function addPost() {
+      let date = document.getElementById('postDate').value;
+      let text = document.getElementById('postText').value;
+      if(date && text){
+        posts.push({date: date, text: text});
+        localStorage.setItem('posts', JSON.stringify(posts));
+        updateDisplay();
+        document.getElementById('postDate').value = '';
+        document.getElementById('postText').value = '';
+        alert("Post added! Refresh the History page to see it.");
+      } else {
+        alert("Please enter both a date and text.");
+      }
+    }
+
+    updateDisplay();
+  </script>
 
   <hr>
   <marquee>✟ Thanks for visiting Miserere Nobis ✟</marquee>
