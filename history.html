@@ -21,25 +21,32 @@
   </div>
 
   <hr>
-
   <ul id="postList">
-    <li>No posts yet.</li>
+    <li>Loading posts...</li>
   </ul>
 
   <script>
-    let posts = JSON.parse(localStorage.getItem('posts') || '[]');
-    let list = document.getElementById('postList');
-    list.innerHTML = '';
-    if(posts.length === 0){
-      list.innerHTML = "<li>No posts yet.</li>";
-    } else {
-      for(let i=posts.length-1;i>=0;i--){
-        list.innerHTML += "<li><b>" + posts[i].date + "</b> — " + posts[i].text + "</li>";
-      }
-    }
+    fetch('posts.json')
+      .then(response => response.json())
+      .then(posts => {
+        let list = document.getElementById('postList');
+        list.innerHTML = '';
+        if(posts.length === 0){
+          list.innerHTML = "<li>No posts yet.</li>";
+        } else {
+          for(let i=posts.length-1;i>=0;i--){
+            list.innerHTML += "<li><b>" + posts[i].date + "</b> — " + posts[i].text + "</li>";
+          }
+        }
+      })
+      .catch(err => {
+        document.getElementById('postList').innerHTML = "<li>Error loading posts.</li>";
+        console.error(err);
+      });
   </script>
 
   <hr>
   <marquee direction="right">✟ Scroll back in time with me ✟</marquee>
 </body>
 </html>
+
