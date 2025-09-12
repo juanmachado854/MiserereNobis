@@ -3,29 +3,12 @@
 <head>
   <title>Miserere Nobis — History</title>
   <style>
-    body {
-      background-color: #000033;
-      color: #FFD700;
-      font-family: "Courier New", monospace;
-      text-align: center;
-      background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
-    }
-    h1 {
-      font-family: "Brush Script MT", cursive;
-      font-size: 42px;
-      color: #FFCCFF;
-      text-shadow: 2px 2px #660066;
-    }
-    a {
-      color: #00FFFF;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #FF00FF;
-    }
-    .nav {
-      margin: 20px;
-    }
+    body {background-color:#000033;color:#FFD700;font-family:"Courier New", monospace;text-align:center;background-image:url("https://www.transparenttextures.com/patterns/stardust.png");}
+    h1 {font-family:"Brush Script MT", cursive;font-size:42px;color:#FFCCFF;text-shadow:2px 2px #660066;}
+    a {color:#00FFFF;text-decoration:none;}
+    a:hover {color:#FF00FF;}
+    .nav {margin:20px;}
+    ul {list-style:none;padding:0;}
   </style>
 </head>
 <body>
@@ -38,11 +21,23 @@
   </div>
 
   <hr>
-  <h2>Previous Posts</h2>
-  <ul style="list-style: none; padding: 0;">
-    <li><b>September 12, 2025</b> — First post in my new 90s blog</li>
-    <!-- Add more as you go -->
+
+  <ul id="postList">
+    <li>No posts yet.</li>
   </ul>
+
+  <script>
+    let posts = JSON.parse(localStorage.getItem('posts') || '[]');
+    let list = document.getElementById('postList');
+    list.innerHTML = '';
+    if(posts.length === 0){
+      list.innerHTML = "<li>No posts yet.</li>";
+    } else {
+      for(let i=posts.length-1;i>=0;i--){
+        list.innerHTML += "<li><b>" + posts[i].date + "</b> — " + posts[i].text + "</li>";
+      }
+    }
+  </script>
 
   <hr>
   <marquee direction="right">✟ Scroll back in time with me ✟</marquee>
