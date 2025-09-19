@@ -3,15 +3,43 @@
 <head>
   <title>Miserere Nobis</title>
   <style>
-    body {background-color:#000033;color:#FFD700;font-family:"Courier New", monospace;text-align:center;background-image:url("https://www.transparenttextures.com/patterns/stardust.png");}
-    h1 {font-family:"Brush Script MT", cursive;font-size:84px;color:#9e9482;text-shadow:2px 2px #faf6f2;}
-    a {color:#00FFFF;text-decoration:none;}
-    a:hover {color:#FF00FF;}
-    .nav {margin:40px;}
+    body {
+      background-color: #000033;
+      color: #FFD700;
+      font-family: "Courier New", monospace;
+      text-align: center;
+      background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+    }
+    h1 {
+      font-family: "Brush Script MT", cursive;
+      font-size: 84px;
+      color: #9e9482;
+      text-shadow: 2px 2px #faf6f2;
+      margin-top: 50px; /* pushes title down */
+    }
+    a {
+      color: #00FFFF;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #FF00FF;
+    }
+    .nav {
+      margin: 40px;
+    }
+    h2 {
+      margin-top: 30px;
+    }
+    img {
+      margin-top: 20px;
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
-  <h1> Miserere Nobis </h1>
+  <h1>Miserere Nobis</h1>
   
   <!-- MIDI hymn autoplay -->
   <embed src="https://www.vgmusic.com/music/other/miscellaneous/piano/AveMaria.mid" autostart="true" loop="true" hidden="true">
@@ -19,7 +47,8 @@
   <div class="nav">
     <a href="index.html">Home</a> | 
     <a href="history.html">History</a> | 
-    <a href="links.html">Links</a>
+    <a href="links.html">Links</a> | 
+    <a href="portfolio.html">Portfolio</a> <!-- Added Portfolio tab -->
   </div>
 
   <hr>
@@ -31,7 +60,7 @@
       .then(response => response.json())
       .then(posts => {
         if(posts.length > 0){
-          let latest = posts[posts.length-1];
+          let latest = posts[posts.length - 1];
           document.getElementById('latestPost').innerHTML = "<b>" + latest.date + "</b> — " + latest.text;
         } else {
           document.getElementById('latestPost').innerHTML = "No posts yet.";
@@ -45,7 +74,8 @@
 
   <hr>
   <marquee> qui tollis peccata mundi </marquee>
+
+  <!-- Image now inside body -->
+  <img src="Agnus Dei.jpg" alt="Blood Of The Lamb" width="600">
 </body>
 </html>
-<img src="Agnus Dei.jpg" alt="Blood Of The Lamb" width="600">
-
