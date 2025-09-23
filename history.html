@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Miserere Nobis - History</title>
+  <title>Miserere Nobis — History</title>
   <style>
     body {
       background-color: #000033;
@@ -13,6 +13,7 @@
     h1 {
       font-family: "Brush Script MT", cursive;
       font-size: 72px;
+      color: #FFD700;
       text-shadow: 2px 2px #222222;
       margin-bottom: 10px;
     }
@@ -28,29 +29,17 @@
     nav a:hover {
       text-decoration: underline;
     }
-    .content {
-      max-width: 900px;
-      margin: auto;
-      padding: 30px;
-      text-align: left;
-      background-color: rgba(0, 0, 51, 0.8);
-      border-radius: 12px;
-      line-height: 1.8;
+    ul {
+      list-style: none;
+      padding: 0;
     }
-    h2 {
-      margin-top: 40px;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    p {
+    ul li {
       margin-bottom: 25px;
-      text-align: justify;
-    }
-    hr {
-      border: none;
-      height: 1px;
-      background: #FFD700;
-      margin: 40px 0;
+      line-height: 1.6;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
     }
   </style>
 </head>
@@ -63,9 +52,33 @@
     <a href="portfolio.html">Portfolio</a> |
     <a href="apologetics.html">Apologetics</a>
   </nav>
-  <div class="content">
-    <h2>History</h2>
-    <p>Here you can write your history content with extra spacing and readability.</p>
-  </div>
+
+  <hr>
+  <ul id="postList">
+    <li>Loading posts...</li>
+  </ul>
+
+  <script>
+    fetch('posts.json')
+      .then(response => response.json())
+      .then(posts => {
+        let list = document.getElementById('postList');
+        list.innerHTML = '';
+        if(posts.length === 0){
+          list.innerHTML = "<li>No posts yet.</li>";
+        } else {
+          for(let i=posts.length-1;i>=0;i--){
+            list.innerHTML += "<li><b>" + posts[i].date + "</b> — " + posts[i].text + "</li>";
+          }
+        }
+      })
+      .catch(err => {
+        document.getElementById('postList').innerHTML = "<li>Error loading posts.</li>";
+        console.error(err);
+      });
+  </script>
+
+  <hr>
+  <marquee direction="left">A View Into The Past</marquee>
 </body>
 </html>
