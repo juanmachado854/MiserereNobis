@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Miserere Nobis - Portfolio</title>
+  <title>Miserere Nobis — Portfolio</title>
   <style>
     body {
       background-color: #000033;
@@ -13,6 +13,7 @@
     h1 {
       font-family: "Brush Script MT", cursive;
       font-size: 72px;
+      color: #FFD700;
       text-shadow: 2px 2px #222222;
       margin-bottom: 10px;
     }
@@ -28,28 +29,22 @@
     nav a:hover {
       text-decoration: underline;
     }
-    .content {
-      max-width: 900px;
-      margin: auto;
-      padding: 30px;
-      text-align: left;
-      background-color: rgba(0, 0, 51, 0.8);
+    .portfolio {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+    .portfolio img {
+      width: 100%;
       border-radius: 12px;
-      line-height: 1.8;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
     }
-    h2 {
-      margin-top: 40px;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    p {
-      margin-bottom: 25px;
-      text-align: justify;
-    }
-    img {
-      max-width: 100%;
-      margin: 20px 0;
-      border-radius: 10px;
+    .caption {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #FFD700;
     }
   </style>
 </head>
@@ -62,9 +57,19 @@
     <a href="portfolio.html">Portfolio</a> |
     <a href="apologetics.html">Apologetics</a>
   </nav>
-  <div class="content">
-    <h2>Portfolio</h2>
-    <p>Showcase your works here. Add images, descriptions, and notes about your projects.</p>
+
+  <hr>
+  <div class="portfolio">
+    <div>
+      <img src="AI Render For College Hall 2025.jpeg" alt="Exterior Rendering — College Hall">
+      <div class="caption">Exterior Rendering — Kirkwood College Hall Proposal</div>
+    </div>
+    <div>
+      <img src="AI Render for College Hall Interior 2025.jpeg" alt="Interior Rendering — College Hall">
+      <div class="caption">Interior Rendering — Kirkwood College Hall Proposal</div>
+    </div>
   </div>
+  <hr>
+  <marquee direction="left">Portfolio Showcase</marquee>
 </body>
 </html>
