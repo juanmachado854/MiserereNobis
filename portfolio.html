@@ -1,68 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Miserere Nobis — Portfolio</title>
+  <title>Miserere Nobis - Portfolio</title>
   <style>
     body {
-      background-color:#000033;
-      color:#FFD700;
-      font-family:"Courier New", monospace;
-      text-align:center;
-      background-image:url("https://www.transparenttextures.com/patterns/stardust.png");
+      background-color: #000033;
+      color: #FFD700;
+      font-family: "Courier New", monospace;
+      text-align: center;
+      background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
     }
     h1 {
-      font-family:"Brush Script MT", cursive;
-      font-size:42px;
-      color:#9e9482;
-      text-shadow:2px 2px #faf6f2;
+      font-family: "Brush Script MT", cursive;
+      font-size: 72px;
+      text-shadow: 2px 2px #222222;
+      margin-bottom: 10px;
     }
-    a {
-      color:#00FFFF;
-      text-decoration:none;
+    nav {
+      margin: 20px;
+      font-size: 20px;
     }
-    a:hover {color:#FF00FF;}
-    .nav {margin:20px;}
-    .portfolio {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-      max-width:1000px;
-      margin:40px auto;
+    nav a {
+      color: #FFD700;
+      text-decoration: none;
+      margin: 0 10px;
     }
-    .portfolio img {
-      width:100%;
-      border-radius:12px;
-      box-shadow:0 0 15px rgba(0,0,0,0.6);
+    nav a:hover {
+      text-decoration: underline;
     }
-    .caption {
-      margin-top:10px;
-      font-size:14px;
-      color:#FFD700;
+    .content {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      text-align: left;
+      background-color: rgba(0, 0, 51, 0.8);
+      border-radius: 12px;
+      line-height: 1.8;
+    }
+    h2 {
+      margin-top: 40px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    p {
+      margin-bottom: 25px;
+      text-align: justify;
+    }
+    img {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>Portfolio</h1>
-
-  <div class="nav">
-    <a href="index.html">Home</a> | 
-    <a href="history.html">History</a> | 
-    <a href="portfolio.html">Portfolio</a> | 
-    <a href="links.html">Links</a>
+  <h1>Miserere Nobis</h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="history.html">History</a> |
+    <a href="links.html">Links</a> |
+    <a href="portfolio.html">Portfolio</a> |
+    <a href="apologetics.html">Apologetics</a>
+  </nav>
+  <div class="content">
+    <h2>Portfolio</h2>
+    <p>Showcase your works here. Add images, descriptions, and notes about your projects.</p>
   </div>
-
-  <hr>
-  <div class="portfolio">
-    <div>
-      <img src="AI Render For College Hall 2025.jpeg" alt="Exterior Rendering — College Hall">
-      <div class="caption">Exterior Rendering — Kirkwood College Hall Proposal</div>
-    </div>
-    <div>
-      <img src="AI Render for College Hall Interior 2025.jpeg" alt="Interior Rendering — College Hall">
-      <div class="caption">Interior Rendering — Kirkwood College Hall Proposal</div>
-    </div>
-  </div>
-  <hr>
-  <marquee direction="left">  </marquee>
 </body>
 </html>
