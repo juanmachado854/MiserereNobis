@@ -13,19 +13,21 @@
     h1 {
       font-family: "Brush Script MT", cursive;
       font-size: 84px;
-      color: #9e9482;
-      text-shadow: 2px 2px #faf6f2;
-      margin-top: 30px; /* pushes title down */
+      color: #FFD700;
+      text-shadow: 2px 2px #222222;
+      margin-top: 30px;
     }
-    a {
-      color: #00FFFF;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #FF00FF;
-    }
-    .nav {
+    nav {
       margin: 40px;
+      font-size: 20px;
+    }
+    nav a {
+      color: #FFD700;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
     h2 {
       margin-top: 30px;
@@ -41,15 +43,15 @@
 <body>
   <h1>Miserere Nobis</h1>
   
-  <!-- MIDI hymn autoplay -->
   <embed src="https://www.vgmusic.com/music/other/miscellaneous/piano/AveMaria.mid" autostart="true" loop="true" hidden="true">
 
-  <div class="nav">
-    <a href="index.html">Home</a> | 
-    <a href="history.html">History</a> | 
-    <a href="links.html">Links</a> | 
-    <a href="portfolio.html">Portfolio</a> <!-- Added Portfolio tab -->
-  </div>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="history.html">History</a> |
+    <a href="links.html">Links</a> |
+    <a href="portfolio.html">Portfolio</a> |
+    <a href="apologetics.html">Apologetics</a>
+  </nav>
 
   <hr>
   <h2>Latest Post</h2>
@@ -73,9 +75,7 @@
   </script>
 
   <hr>
-  <marquee> Agnus Dei </marquee>
-
-  <!-- Image now inside body -->
+  <marquee>Agnus Dei</marquee>
   <img src="Agnus Dei.jpg" alt="Blood Of The Lamb" width="600">
 </body>
 </html>
