@@ -28,18 +28,24 @@
       text-decoration: none;
       margin: 0 10px;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
+
+    /* Reusable portfolio grid */
     .portfolio {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 40px auto;
       padding: 0 15px;
+      align-items: start;
     }
-    .portfolio img {
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card img {
       width: 100%;
       height: 300px;
       object-fit: cover;
@@ -64,23 +70,13 @@
       margin: 50px auto;
       width: 80%;
     }
-    /* Responsive styles */
+
+    /* Responsive tweaks */
     @media (max-width: 768px) {
-      .portfolio {
-        grid-template-columns: 1fr; /* stack images on small screens */
-      }
-      h1 {
-        font-size: 48px; /* slightly smaller title */
-      }
-      nav {
-        font-size: 18px;
-      }
-      .concept {
-        font-size: 16px;
-      }
-      .portfolio img {
-        height: auto; /* allow images to adjust naturally on mobile */
-      }
+      h1 { font-size: 48px; }
+      nav { font-size: 18px; }
+      .concept { font-size: 16px; }
+      .card img { height: auto; } /* natural height on small screens */
     }
   </style>
 </head>
@@ -100,14 +96,28 @@
   <div class="concept">
     <strong>Kirkwood College Hall Proposal:</strong> Tasked with designing a new centerpiece for the Kirkwood Community Campus, this proposal reimagines a hall that stands out as both a landmark and a welcoming academic hub.
   </div>
+
+  <!-- Four-up grid: exterior, interior, two sections -->
   <div class="portfolio">
-    <div>
-      <img src="AI Render For College Hall 2025.jpeg" alt="Exterior Rendering — College Hall">
+    <div class="card">
+      <img loading="lazy" src="AI Render For College Hall 2025.jpeg" alt="Exterior Rendering — Kirkwood College Hall">
       <div class="caption">Exterior Rendering — Kirkwood College Hall Proposal</div>
     </div>
-    <div>
-      <img src="AI Render for College Hall Interior 2025.jpeg" alt="Interior Rendering — College Hall">
+
+    <div class="card">
+      <img loading="lazy" src="AI Render for College Hall Interior 2025.jpeg" alt="Interior Rendering — Kirkwood College Hall">
       <div class="caption">Interior Rendering — Kirkwood College Hall Proposal</div>
+    </div>
+
+    <!-- NEW: Section/Elevation images -->
+    <div class="card">
+      <img loading="lazy" src="Lecture-Hall-Section.png" alt="Lecture Hall Section — Kirkwood College Hall">
+      <div class="caption">Section — Lecture Hall (Transverse)</div>
+    </div>
+
+    <div class="card">
+      <img loading="lazy" src="A-301-Building-Sections.png" alt="Building Sections Sheet — Kirkwood College Hall">
+      <div class="caption">Building Sections — A-301 (Longitudinal & Transverse)</div>
     </div>
   </div>
 
@@ -117,14 +127,15 @@
   <div class="concept">
     <strong>Library in the Park:</strong> Inspired by a secluded library I encountered while visiting Mexico City, this design envisions a transparent glass façade placed in the heart of a park — a structure that connects nature and community by allowing sightlines through the building itself.
   </div>
+
   <div class="portfolio">
-    <div>
-      <img src="Library In The Park.png" alt="Exterior Render - Library In The Park">
+    <div class="card">
+      <img loading="lazy" src="Library In The Park.png" alt="Exterior Render — Library In The Park">
       <div class="caption">Exterior Rendering — Library In The Park</div>
     </div>
-    <div>
-      <img src="Close Up Of Library In The Park.png" alt="CloseUp Render - Library In The Park">
-      <div class="caption">Close Up Rendering — Library In The Park</div>
+    <div class="card">
+      <img loading="lazy" src="Close Up Of Library In The Park.png" alt="Close-up Render — Library In The Park">
+      <div class="caption">Close-Up Rendering — Library In The Park</div>
     </div>
   </div>
 
