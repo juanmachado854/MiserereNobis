@@ -23,7 +23,6 @@
     nav a { color: #FFD700; text-decoration: none; margin: 0 10px; }
     nav a:hover { text-decoration: underline; }
 
-    /* Reusable portfolio grid (general) */
     .portfolio {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -33,24 +32,25 @@
       padding: 0 15px;
       align-items: start;
     }
-    .card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .card img {
+    .card { display: flex; flex-direction: column; align-items: center; }
+
+    /* Uniform size frame so all tiles line up */
+    .frame {
       width: 100%;
-      height: 300px;                 /* default: fills card */
-      object-fit: cover;             /* default: may crop (good for photos) */
+      aspect-ratio: 16 / 9;          /* same visual size for all */
+      background: #ffffff;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,0,0,0.6);
-      background: #ffffff;           /* looks good behind drawings */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 8px;                   /* breathing room for drawings */
     }
-    /* ---- No-crop helper for drawings/renders that must fit fully ---- */
-    .no-crop {
-      height: auto !important;       /* show full image */
-      object-fit: contain !important;
-      padding: 8px;                  /* subtle breathing room for sheets */
+    .frame img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;            /* no cropping */
     }
 
     .caption { margin-top: 10px; font-size: 16px; color: #FFD700; }
@@ -64,22 +64,19 @@
     }
     .divider { border-top: 2px solid #FFD700; margin: 50px auto; width: 80%; }
 
-    /* Kirkwood: force a strict 2×2 layout so first two sit on top row */
+    /* Force a strict 2×2 layout for the Kirkwood block */
     .portfolio--2x2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-auto-rows: auto;
       gap: 24px;
       max-width: 1200px;
     }
 
-    /* Responsive tweaks */
     @media (max-width: 768px) {
       h1 { font-size: 48px; }
       nav { font-size: 18px; }
       .concept { font-size: 16px; }
       .portfolio--2x2 { grid-template-columns: 1fr; } /* stack on mobile */
-      .card img { height: auto; }      /* natural height on small screens */
     }
   </style>
 </head>
@@ -100,36 +97,42 @@
     <strong>Kirkwood College Hall Proposal:</strong> Tasked with designing a new centerpiece for the Kirkwood Community Campus, this proposal reimagines a hall that stands out as both a landmark and a welcoming academic hub.
   </div>
 
-  <!-- EXACT 2×2: top row = renders, bottom row = sections; no cropping -->
+  <!-- 2×2 grid: top = renders, bottom = sections; axon under interior -->
   <div class="portfolio portfolio--2x2">
-    <!-- Top row -->
+    <!-- Top-left: Exterior -->
     <div class="card">
-      <img loading="lazy" class="no-crop"
-           src="AI Render For College Hall 2025.jpeg"
-           alt="Exterior Rendering — Kirkwood College Hall">
+      <div class="frame">
+        <img loading="lazy" src="AI Render For College Hall 2025.jpeg"
+             alt="Exterior Rendering — Kirkwood College Hall">
+      </div>
       <div class="caption">Exterior Rendering — Kirkwood College Hall Proposal</div>
     </div>
 
+    <!-- Top-right: Interior (Auditorium) -->
     <div class="card">
-      <img loading="lazy" class="no-crop"
-           src="AI Render for College Hall Interior 2025.jpeg"
-           alt="Interior Rendering — Kirkwood College Hall">
+      <div class="frame">
+        <img loading="lazy" src="AI Render for College Hall Interior 2025.jpeg"
+             alt="Interior Rendering — Kirkwood College Hall">
+      </div>
       <div class="caption">Interior Rendering — Kirkwood College Hall Proposal</div>
     </div>
 
-    <!-- Bottom row -->
+    <!-- Bottom-left: Building Sections (under exterior) -->
     <div class="card">
-      <img loading="lazy" class="no-crop"
-           src="Screenshot 2025-10-09 123942.png"
-           alt="Lecture Hall Axion — Kirkwood College Hall">
-      <div class="caption">Axion View — Auditorium</div>
+      <div class="frame">
+        <img loading="lazy" src="Screenshot 2025-10-09 122235.png"
+             alt="Building Sections — A-301, Kirkwood College Hall">
+      </div>
+      <div class="caption">Building Sections — A-301</div>
     </div>
 
+    <!-- Bottom-right: Axon View (under interior) -->
     <div class="card">
-      <img loading="lazy" class="no-crop"
-           src="Screenshot 2025-10-09 122235.png"
-           alt="Building Sections Sheet — Kirkwood College Hall">
-      <div class="caption">Building Sections — A-301</div>
+      <div class="frame">
+        <img loading="lazy" src="Screenshot 2025-10-09 123942.png"
+             alt="Axon View — Auditorium, Kirkwood College Hall">
+      </div>
+      <div class="caption">Axon View — Auditorium</div>
     </div>
   </div>
 
@@ -142,11 +145,15 @@
 
   <div class="portfolio">
     <div class="card">
-      <img loading="lazy" src="Library In The Park.png" alt="Exterior Render — Library In The Park">
+      <div class="frame">
+        <img loading="lazy" src="Library In The Park.png" alt="Exterior Render — Library In The Park">
+      </div>
       <div class="caption">Exterior Rendering — Library In The Park</div>
     </div>
     <div class="card">
-      <img loading="lazy" src="Close Up Of Library In The Park.png" alt="Close-up Render — Library In The Park">
+      <div class="frame">
+        <img loading="lazy" src="Close Up Of Library In The Park.png" alt="Close-up Render — Library In The Park">
+      </div>
       <div class="caption">Close-Up Rendering — Library In The Park</div>
     </div>
   </div>
